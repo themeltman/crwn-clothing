@@ -2,6 +2,8 @@ import { useState} from "react";
 import { createAuthUserWithEmailAndPassword } from "../../utils/firebase/firebase.utils";
 import { createUserDocumentFromAuth } from "../../utils/firebase/firebase.utils";
 import FormInput from "../form-input/form-input";
+import './sign-up-form.sytle.scss'
+import Button from "../button/button";
 
 const defaultFormFields = {
     displayName: '',
@@ -17,6 +19,7 @@ const SignUpForm = () => {
     const resetFormFields = () => {
         setFormFields(defaultFormFields)
     }
+
     const handleSubmit = async (event) => {
         event.preventDefault()
         if (password !== confirmPassword) {
@@ -42,13 +45,14 @@ const SignUpForm = () => {
     }
     return  (
         <div>
-            <h1>Sign up with youi email and password</h1>
+            <h2>Don't have an account</h2>
+            <span>Sign up with youi email and password</span>
             <form onSubmit={handleSubmit}>
                 <FormInput label={'Display Name'} type={'text'} required onChange={handleChange} name={'displayName'} value={displayName}/>
                 <FormInput label={'Email'} type={'email'} required onChange={handleChange} name={'email'} value={email}/>
                 <FormInput label={'Password'} type={'password'} required onChange={handleChange} name={'password'} value={password} autoComplete="on"/>
                 <FormInput label={'Confirm Password'} type={'password'} required onChange={handleChange} name={'confirmPassword'} value={confirmPassword} autoComplete="on"/>
-                <button type={'submit'}>Sign up</button>
+                <Button type={'submit'}>Sign up</Button>
             </form>
         </div>
     )
