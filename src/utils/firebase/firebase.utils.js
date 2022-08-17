@@ -60,4 +60,4 @@ export const sigOutUser = () => {
     signOut(auth)
 }
 
-export const onAuthStateChangedListener = (callback) => onAuthStateChangedListener(auth, callback)
+export const onAuthStateChangedListener = (callback) => onAuthStateChanged(auth, callback)
