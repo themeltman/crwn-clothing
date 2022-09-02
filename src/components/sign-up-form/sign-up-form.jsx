@@ -2,8 +2,8 @@ import { useState } from "react";
 import { createAuthUserWithEmailAndPassword } from "../../utils/firebase/firebase.utils";
 import { createUserDocumentFromAuth } from "../../utils/firebase/firebase.utils";
 import FormInput from "../form-input/form-input";
-import './sign-up-form.sytle.scss'
 import Button from "../button/button";
+import {SignUpContainer} from "./sign-up-form.sytle";
 
 const defaultFormFields = {
     displayName: '',
@@ -44,7 +44,7 @@ const SignUpForm = () => {
         setFormFields({...formFields, [name]: value})
     }
     return  (
-        <div className={'sign-up-container'}>
+        <SignUpContainer>
             <h2>Don't have an account</h2>
             <span>Sign up with your email and password</span>
             <form onSubmit={handleSubmit}>
@@ -54,7 +54,7 @@ const SignUpForm = () => {
                 <FormInput label={'Confirm Password'} type={'password'} required onChange={handleChange} name={'confirmPassword'} value={confirmPassword} autoComplete="on"/>
                 <Button type={'submit'}>Sign up</Button>
             </form>
-        </div>
+        </SignUpContainer>
     )
 }
 export default SignUpForm

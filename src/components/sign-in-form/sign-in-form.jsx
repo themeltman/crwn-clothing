@@ -4,8 +4,8 @@ import {
     signInUserWithEmailAndPassword,
     signInWithGooglePopup
 } from "../../utils/firebase/firebase.utils";
-import './sign-in-form.sytle.scss'
-import Button from '../button/button';
+import Button, {BUTTON_TYPE_CLASSES} from '../button/button';
+import {ButtonsContainer, SignInContainer} from "./sign-in-form.sytle";
 
 const defaultSignInFields = {
     email: '',
@@ -41,18 +41,18 @@ const SignInForm = () => {
     }
 
     return (
-        <div className={'sign-in-container'}>
+        <SignInContainer>
             <h2>I already have an Account</h2>
             <span>Sign in with your email and password</span>
             <form onSubmit={handleSubmit}>
                 <FormInput label={'email'} type={'text'} required onChange={handleChange} name={'email'} value={email}/>
                 <FormInput label={'password'} type={'password'} required onChange={handleChange} name={'password'} value={password}  autoComplete="on"/>
-                <div className={'buttons-container'}>
+                <ButtonsContainer>
                     <Button type={'submit'}>Sign In</Button>
-                    <Button type={'button'} buttonType={'google'} onClick={signInWithGoogle}>Google sign in</Button>
-                </div>
+                    <Button type={'button'} buttonType={BUTTON_TYPE_CLASSES.google} onClick={signInWithGoogle}>Google sign in</Button>
+                </ButtonsContainer>
             </form>
-        </div>
+        </SignInContainer>
     )
 }
 
