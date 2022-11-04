@@ -1,18 +1,23 @@
 import {USER_ACTON_TYPES} from "./user.types";
 
 const INITIAL_STATE = {
-    currentUser: null
+    currentUser: null,
+    isLoading: false,
+    error: null,
 }
 
 export const userReducer = (state = INITIAL_STATE, action) => {
     const { type, payload } = action
 
     switch (type) {
-        case  USER_ACTON_TYPES.SET_CURRENT_USER:
-            return {
-                ...state,  // This is not need, but shows how it would be used
-                currentUser: payload
-            }
+        case  USER_ACTON_TYPES.SIGN_IN_SUCCESS:
+            return {...state, currentUser: payload}
+        case USER_ACTON_TYPES.SIGN_IN_FAILED:
+        case USER_ACTON_TYPES.SIGN_UP_FAILED:
+        case USER_ACTON_TYPES.SIGN_OUT_FAILED:
+            return {...state, error: payload}
+        case USER_ACTON_TYPES.SIGN_OUT_SUCCESS:
+            return {...state, currentUser: null}
         default:
             return state
     }
